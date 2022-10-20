@@ -1,9 +1,6 @@
-alpha = 'abcdefghijklmnopqrstuvwxyz'
-
-
 def sumIndices(string):
-
-    return sum([alpha.find(i) if i in alpha else -1 for i in string])
+    alpha = 'abcdefghijklmnopqrstuvwxyz'
+    return sum([alpha.find(i) for i in string if i in alpha])
 
 
 # print(sumIndices('I went to town!'))
@@ -25,19 +22,14 @@ def bisectionSearch(low, high, counter):
 
 # print(bisectionSearch(0, x, 0))
 
-x = 77
-eps = 1
+
+def search(guess):
+    if abs(guess**2 - 77) > 1:
+        return 1+search((guess + (77/guess))/2)
+    return 1
 
 
-def search(guess, counter):
-    guess += x/guess
-    counter += 1
-    if abs(guess**2 - x) <= eps:
-        return counter
-    return search(guess, counter)
-
-
-print(search(0, 0))
+print(search(2))
 
 
 def sumN(number):
