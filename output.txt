@@ -1,0 +1,16 @@
+Base Inputs
+a : [False, False, False, False, True, True, True, True]
+b : [False, False, True, True, False, False, True, True]
+c : [False, True, False, True, False, True, False, True]
+a': [True, True, True, True, False, False, False, False]
+b': [True, True, False, False, True, True, False, False]
+c': [True, False, True, False, True, False, True, False]
+
+Logical Terms
+a' : [True, True, True, True, False, False, False, False]
+bc' : [False, False, True, False, False, False, True, False]
+c : [False, True, False, True, False, True, False, True]
+
+Logical Statement
+a'+bc'+c : [True, True, True, True, False, True, True, True]
+
