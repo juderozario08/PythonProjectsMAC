@@ -1,3 +1,6 @@
+# Name: Jude Rozario
+# Student ID : 501166063
+
 # This program creates a truth table for a logical statement given by the user.
 # After getting the input from the user, create a truth table for each individual variable,
 # Then for each individual term separated by '+' and then the entire logical statement
@@ -13,10 +16,11 @@
 # Eg. a+b
 # If two or more logical variables are written together without any symbols, it represents AND
 # Eg. ab
-# For the negation of a logical variable, we use "'" apostrophe.
+# For the negation of a logical variable, we use ' apostrophe.
 # Eg. a'
 # No bracket operations are included in this program
-# Example of a proper logical statement: ab' + bc' + cd
+# One bracket after another means it is and logic we will consider the Products of Sum format if that is the case.
+# Example of a proper logical statement: ab' + bc' + cd or (a+b')(b+c')(c+d)
 
 # Open a file and call it output.txt
 file = open("output.txt", "w")
@@ -244,12 +248,11 @@ if __name__ == "__main__":
     # Getting a valid answer for the type of calculation the user wants to do
     while not validAnswer:
         chooseFunc = input(
-            "Type one of the options\nLogical Equivalence Calculator or Truth Table Simulator: \n")
-        chooseFunc = chooseFunc.strip()
-        if chooseFunc == "Logical Equivalence Calculator":
+            "Type one of the options\nLogical Equivalence Calculator or Truth Table Simulator: \n").replace(" ", "").lower()
+        if chooseFunc == "logicalequivalencecalculator":
             logicalEqv = True
             validAnswer = True
-        elif chooseFunc == "Truth Table Simulator":
+        elif chooseFunc == "truthtablesimulator":
             logicalEqv = False
             validAnswer = True
     if logicalEqv:

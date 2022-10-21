@@ -1,33 +1,50 @@
-# strings = ["apples", "banana", "clementine"]
-# counter = 0
-# vowels = 'aeiou'
-# for string in strings:
-#     for char in string:
-#         if char in vowels:
-#             counter += 1
-# print(counter)
+from subprocess import call
 
-currentTime = input("What time is it in 24 hour clock? \nExample: 00:00 \n")
+
+currentTime = input(
+    "What time is it in 24 hour clock? \nExample: 00:00 \n").split(":")
 arrivalTime = input(
-    "What time do you need to be in school by? Same input format as last question: \n")
-currTimeArr = currentTime.split(":")
-arrivalTimeArr = arrivalTime.split(":")
-currTimeInMin = int(currTimeArr[0])*60 + int(currTimeArr[1])
-arrivalTimeInMin = int(arrivalTimeArr[0])*60 + int(arrivalTimeArr[1])
+    "What time do you need to be in school by? Same input format as last question: \n").split(":")
+currentTime = int(currentTime[0]) + (int(currentTime[1])/60)
+arrivalTime = int(arrivalTime[0]) + (int(arrivalTime[1])/60)
 
 
-def uber_or_not():
-    priority = ''
-    while True:
-        priority = str(input(
-            "Is it absolutely necessary for you to make it on time? Yes or No: \n")).replace(" ", "").lower()
-        if priority == 'yes' or priority == 'no':
-            break
-    return "Call an uber" if priority == 'yes' else "Take bus 29 and bus 505"
+def getDifferenceInTime():
+    return 24 + arrivalTime - currentTime if arrivalTime < currentTime else arrivalTime - currentTime
 
 
-if 120 <= arrivalTimeInMin <= 420:
-    if arrivalTimeInMin - currTimeInMin >= 120:
+def callUber():
+    return "Call an uber"
+
+
+def uber__or_29():
+    priority = input(
+        "Is it absolutely necessary to reach school on time? yes or no: ").strip().upper()
+    return callUber() if priority == 'yes' else "take 29 and bus 505"
+
+
+def uber__or_63():
+    priority = input(
+        "Is it absolutely necessary to reach school on time? yes or no: ").strip().upper()
+    return callUber() if priority == 'yes' else "take 63 and Line 1"
+
+
+def eglinton():
+    eglintonOpen = input(
+        "Is Eglinton Station West open? Yes or No: ").strip().lower()
+    return "Take bus 63 and Line 1" if eglintonOpen == 'yes' else "Take bus 90 and Line 1"
+
+
+def rushHour():
+    return 7 <= arrivalTime <= 9 or 17 <= arrivalTime <= 18
+
+
+if 2 <= arrivalTime <= 7:
+    if getDifferenceInTime() >= 2:
         print("Take bus 29 and bus 505")
-    elif arrivalTimeInMin - currTimeInMin < 120:
-        print(uber_or_not())
+    elif getDifferenceInTime() < 2:
+        print(uber__or_29())
+
+if 2 > arrivalTime > 7:
+    if rushHour():
+        print()
