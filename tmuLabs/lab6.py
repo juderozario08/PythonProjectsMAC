@@ -8,7 +8,7 @@ def q1(ls):
         print(f"String {i+1}/5: {ls[i]}")
 
 
-def max(ls):
+def Max(ls):
     # Iterate through the list and if there is a float, set the value of float to the largest float value
     floatVal = 0
     for i in ls:
@@ -21,11 +21,7 @@ def max(ls):
 
 def longest(ls):
     # Iterate through the list and find set result to the largest possible string
-    result = ''
-    for i in ls:
-        if len(result) < len(i):
-            result = i
-    print(result)
+    return (ls[list(map(len, ls)).index(max(list(map(len, ls))))])
 
 
 def q4():
@@ -66,34 +62,44 @@ def q5():
     print([0 for i in range(50)])
 
 
-def functionPerimeterPoly(listOfTuples):
+def functionPerimeterPoly(ls):
     # Using list comprehension, use the perimeter formula and use the coordinates accordinly. x2 - x1 and y2 - y1
-    # Then after getting the sum of that list, do the wrap around to use the formula on the last and first coordinates of the list.
-    # Return the final sum
-    return sum([sqrt((listOfTuples[i+1][0] - listOfTuples[i][0])
-                     ** 2 + (listOfTuples[i+1][1] - listOfTuples[i][1]) ** 2) for i in range(len(listOfTuples)-1)]) + (
-        sqrt((listOfTuples[0][0] - listOfTuples[len(listOfTuples)-1][0])**2 + (
-            listOfTuples[0][1] - listOfTuples[len(listOfTuples)-1][1])**2))
+    return sum([sqrt((ls[(i+1) % len(ls)][0] - ls[i][0]) ** 2 + (ls[(i+1) % len(ls)][1] - ls[i][1]) ** 2) for i in range(len(ls))])
 
 
 def permutation(ls):
-    # Create the empty list
-    permutate = []
-    # Create the copy of the users input as a list
-    copy = list(ls)
-    # While the list in not empty, keep generating a random index and pop that index and add that to the new list
-    while len(copy) != 0:
-        permutate.append(copy.pop(randrange(0, len(copy))))
-    # Return the new list
-    return permutate
+    return [ls.pop(randrange(0, len(ls))) for i in range(len(ls))]
 
 
 if __name__ == "__main__":
     # q1([input(f"Enter string {i+1}/5: ") for i in range(5)])
-    # max([100, 'blue', 3.5, 'sugar on the rocks', 7.0])
-    # max([7, 2, 9, 1])
-    # longest(['blue', 'red', 'the white house', 'green'])
+    # Max([100, 'blue', 3.5, 'sugar on the rocks', 7.0])
+    # Max([7, 2, 9, 1])
+    print(longest(['blue', 'red', 'the white house', 'green']))
     # q4()
     # q5()
     # print(functionPerimeterPoly([(3, 4), (6, 9), (10, -2), (6, -2)]))
-    print(permutation(range(0, 30)))
+    # print(permutation(list(range(0, 30))))
+
+
+def bowTie(h):
+    print(
+        ''.join(['*'*(2*i + 1) + ' '*2*(h - (2*i + 1)) + '*'*(2*i + 1)+'\n' for i in range(h//2 + 1)]) + ''.join(
+            ['*'*(2*i + 1) + ' '*2*(h - (2*i + 1)) + '*'*(2*i + 1)+'\n' for i in range(h//2 - 1, -1, -1)]))
+
+
+# bowTie(int(input()))
+counter = 0
+ls = []
+dct = {'0': '0', '1': '1', '8': '8', '6': '9', '9': '6'}
+for i in range(int(input()), int(input())+1):
+    flip = ''
+    for j in range(len(str(i))):
+        if str(i)[j] not in dct:
+            break
+        else:
+            flip += dct[str(i)[j]]
+    if flip[::-1] == str(i):
+        counter += 1
+    flip = ''
+print(counter)
