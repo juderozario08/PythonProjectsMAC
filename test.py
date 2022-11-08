@@ -1,3 +1,4 @@
+import gzip
 from math import ceil
 
 
@@ -36,28 +37,12 @@ def oddBananzaComp(ls):
     return oddBananzaComp(ls)*oddBananzaComp(secondHalf)
 
 
-# print(oddBananzaComp([1, 3, 5]))
-# print(oddBananzaComp([31, 243, 1255]))
-# print(oddBananzaComp([1, 3, 5, 7, 9]))
-# print(oddBananzaComp([1, 9, 25, 49, 81, 905]))
-
-def thursday8am(ls):
-    if len(ls) == 0:
-        return False
-    if len(ls) == 1:
-        return not ls[0]
-    return thursday8am(ls[0:ceil(len(ls)/2)]) and thursday8am(ls[ceil(len(ls)/2):len(ls)]) if (len(ls) % 2 != 0) \
-        else thursday8am(ls[0:ceil(len(ls)/2)]) or thursday8am(ls[ceil(len(ls)/2):len(ls)])
+# x = "sara"
+# print("   x    x\nx xx x\nx   x   x".replace("x", x))
+# for i in range(5):
+#     print(" "*i+x+" "*(9-i*2), x)
+# print(" "*6, x)
 
 
-# print(thursday8am([True, False]))
-# print(thursday8am([True, False, False]))
-# print(thursday8am([False, False, True, False, True, True, False, True, True]))
-
-def bowTie(h):
-    print(
-        ''.join(['*'*(2*i + 1) + ' '*2*(h - (2*i + 1)) + '*'*(2*i + 1)+'\n' for i in range(h//2 + 1)]) + ''.join(
-            ['*'*(2*i + 1) + ' '*2*(h - (2*i + 1)) + '*'*(2*i + 1)+'\n' for i in range(h//2 - 1, -1, -1)]))
-
-
-bowTie(int(input()))
+if __name__ == '__main__':
+    print()
