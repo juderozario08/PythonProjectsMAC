@@ -56,7 +56,8 @@ def fibn(number):
         print(result, end=' ')
 
 
-# fibn(15)
+fibn(1*10**15)
+
 
 def perfNumberAndPrimes(start, stop):
     primes = []
@@ -80,5 +81,4 @@ def perfNumberAndPrimes(start, stop):
     print(perfectNumbers)
 
 
-perfNumberAndPrimes(int(input("Enter Start Range: ")),
-                    int(input("Enter Stop Range: ")))
+# perfNumberAndPrimes(int(input("Enter Start Range: ")),int(input("Enter Stop Range: ")))
