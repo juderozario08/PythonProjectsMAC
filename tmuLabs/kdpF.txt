@@ -1,0 +1,5 @@
+>200 bp region of the chromosome of E. coli, containing gene kdpF, shortest gene
+ttgcagccagaattctacccttccggtatcacttttaggccattggaggtgcactat
+gagtgcaggcgtgataaccggcgtattgctggtgtttttattactgggttatctggt
+ttatgccctgatcaatgcggaggcgttctgatggctgcgcaagggttcttactgatc
+gccacgtttttactggtgttaatggtgc

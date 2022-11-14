@@ -1,5 +1,6 @@
 import gzip
 from math import ceil
+from random import randrange
 
 
 def factorial(number):
@@ -42,7 +43,3 @@ def oddBananzaComp(ls):
 # for i in range(5):
 #     print(" "*i+x+" "*(9-i*2), x)
 # print(" "*6, x)
-
-
-if __name__ == '__main__':
-    print()
