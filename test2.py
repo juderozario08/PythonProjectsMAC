@@ -64,3 +64,30 @@ def occupy(N):
 # longestSequence([randrange(1, 7) for i in range(20)])
 # print(longestFalse([bool(randrange(0, 2)) for i in range(10)]))
 occupy(10)
+
+dct = {17: 37, 11: 8}
+dct_keys = list(dct.keys())
+dct_keys.sort()
+print(dct_keys)
+
+
+def mostfrequent(matrix):
+    '''
+    Returns the value that is most frequent in the matrix
+    but in the case of a tie, return the lowest most frequent value
+    '''
+    dct = {}
+    for i in matrix:
+        i.sort()
+        for j in i:
+            if j not in dct:
+                dct[j] = 0
+            dct[j] += 1
+    dct_keys = list(dct.keys())
+    dct_keys.sort()
+    dct_values = [dct[i] for i in dct_keys]
+    print(dct_keys[dct_values.index(max(dct_values))])
+
+
+mostfrequent([[7, 24, 12], [99, 16, 42], [
+             42, 48, 40], [32, 16, 5], [99, 16, 42]])

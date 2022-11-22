@@ -1,4 +1,4 @@
-import gzip
+import unittest
 from math import ceil
 from random import randrange
 
@@ -43,3 +43,40 @@ def oddBananzaComp(ls):
 # for i in range(5):
 #     print(" "*i+x+" "*(9-i*2), x)
 # print(" "*6, x)
+
+def recursivePal(s):
+    if len(s) < 2:
+        return True
+    elif len(s) == 2 and s[0] == s[1]:
+        return True
+    return s[0] == s[len(s)-1] and recursivePal(s[1:len(s)-1])
+
+
+# print(recursivePal('raceca'))
+
+
+class QuizTestCases(unittest.TestCase):
+    def test_1_noStirng(self):
+        self.assertTrue(recursivePal(''))
+
+    def test_1_twoString(self):
+        self.assertTrue(recursivePal('aa'))
+
+    def test_1_twoStringF(self):
+        self.assertFalse(recursivePal('ab'))
+
+    def test_1_oneStirng(self):
+        self.assertTrue(recursivePal('a'))
+
+    def test_1_fullString(self):
+        self.assertTrue(recursivePal('racecar'))
+
+    def test_1_fullStringF(self):
+        self.assertFalse(recursivePal('raceca'))
+
+
+if __name__ == "__main__":
+    # unittest.main(exit=True)
+    pass
+    string = 'creekeee'
+    print(string.replace('ee', ''))

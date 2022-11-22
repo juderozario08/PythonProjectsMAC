@@ -106,7 +106,7 @@ if __name__ == '__main__':
     print(powerCounter(2, 12))
     print('\nQuestion 6')
     countcalls = 0
-    print(betterPower(2, 10))
+    print(betterPower(2, 12))
     print(countcalls)
     print('\nQuestion 7')
     q7()
