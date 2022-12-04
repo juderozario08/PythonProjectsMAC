@@ -58,22 +58,7 @@ def find_smallest_div(L1, L2):
 # TODO: complete rec_add
 
 
-def rec_max(ls, maxValue):
-    if len(ls) == 1:
-        return maxValue
-    elif len(ls) == 2:
-        return ls[0] if ls[0] > ls[1] else ls[1]
-    temp = ls.pop()
-    if maxValue < temp:
-        maxValue = temp
-    return rec_max(ls, maxValue)
-
-
-print(rec_max([1, 2, 3, 5, 6, 77, 100, 121], 1))
-
-
-def rec_add(L):
-    return L[0] + 2 if len(L) == 1 else L.pop()+rec_add(L)
+def rec_add(L): return L[0] + 2 if len(L) == 1 else L.pop()+rec_add(L)
 
 # Your fifth task will be to complete all unittests here.
 

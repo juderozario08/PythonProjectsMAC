@@ -1,5 +1,8 @@
-from math import ceil
+import unittest
 from random import randrange
+from math import ceil
+from sys import setrecursionlimit
+setrecursionlimit(100000000)
 
 
 def longestSequence(ls):
@@ -63,12 +66,12 @@ def occupy(N):
 
 # longestSequence([randrange(1, 7) for i in range(20)])
 # print(longestFalse([bool(randrange(0, 2)) for i in range(10)]))
-occupy(10)
+# occupy(10)
 
 dct = {17: 37, 11: 8}
 dct_keys = list(dct.keys())
 dct_keys.sort()
-print(dct_keys)
+# print(dct_keys)
 
 
 def mostfrequent(matrix):
@@ -89,5 +92,82 @@ def mostfrequent(matrix):
     print(dct_keys[dct_values.index(max(dct_values))])
 
 
-mostfrequent([[7, 24, 12], [99, 16, 42], [
-             42, 48, 40], [32, 16, 5], [99, 16, 42]])
+# mostfrequent([[7, 24, 12], [99, 16, 42], [
+#              42, 48, 40], [32, 16, 5], [99, 16, 42]])
+
+
+def count_dominators(ls):
+    # If the length is 0 then return 0
+    if ls == []:
+        return 0
+    ls.reverse()
+    # Start the max value from a valid index from the list
+    max_i = ls[0]
+    dominator = 1
+    for i in ls:
+        # If the current value is greater than the max value seen so far,
+        # then set the max to the current value and increment to dominator
+        if i > max_i:
+            max_i = i
+            dominator += 1
+    # Return the dominator
+    return dominator
+
+
+print(count_dominators([42, 7, 12, 9, 2, 5]))
+# Create a function "sortNums" that given a list of integers, returns a dictionary where the key is the ten's column, and the value is a list of the one's column.
+# ex input: [13, 15, 78, 44, 21, 97, 4, 13, 78]
+# ex output:  {1: [3, 5, 3], 7: [8, 8], 4: [4], 2: [1], 9: [7], 0: [4]}
+
+# --------------------------------------------------------------
+# YOUR ANSWER HERE
+# --------------------------------------------------------------
+
+
+def sortNums(nums):
+    # your code here
+    dct = {}
+    for i in nums:
+        key = i // 10
+        value = i % 10
+        if key in dct:
+            dct[key].append(value)
+        else:
+            dct[key] = [value]
+    return dct
+# --------------------------------------------------------------
+# Test Cases
+# --------------------------------------------------------------
+
+
+class myTests(unittest.TestCase):
+    def sameAnswer(self, numDict, numDict2):
+        if (len(dict.keys(numDict)) != len(dict.keys(numDict2))):
+            return False
+
+        for key in dict.keys(numDict):
+            if (len(numDict[key]) != len(numDict2[key])):
+                return False
+            for i in range(len(numDict[key])):
+                if (numDict[key][i] != numDict2[key][i]):
+                    return False
+
+        return True
+
+    def test1(self):
+        sorted = sortNums([13, 15, 78, 44, 21, 97, 4, 13, 78])
+        self.assertTrue(self.sameAnswer(
+            sorted, {1: [3, 5, 3], 7: [8, 8], 4: [4], 2: [1], 9: [7], 0: [4]}))
+
+    def test2(self):
+        self.assertEqual(sortNums([]), {})
+
+    def test3(self):
+        self.assertEqual(sortNums([1]), {0: [1]})
+
+    def test4(self):
+        self.assertEqual(sortNums([1, 1, 1, 1]), {0: [1, 1, 1, 1]})
+
+
+if __name__ == '__main__':
+    unittest.main(exit=True)
