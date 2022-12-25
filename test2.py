@@ -1,8 +1,5 @@
 import unittest
-from random import randrange
 from math import ceil
-from sys import setrecursionlimit
-setrecursionlimit(100000000)
 
 
 def longestSequence(ls):
@@ -52,8 +49,7 @@ def longestFalse(ls):
             biggestRangeLen = end - start
     if biggestRange[1]-biggestRange[0] > 0:
         return biggestRange
-    else:
-        return (ls.index(False), ls.index(False))
+    return (ls.index(False), ls.index(False))
 
 
 def occupy(N):
